@@ -21,6 +21,7 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-telescope/telescope.nvim'
   use 'christoomey/vim-tmux-navigator'
+  use 'stevearc/oil.nvim'
   -- completion
   use {
     "hrsh7th/nvim-cmp",

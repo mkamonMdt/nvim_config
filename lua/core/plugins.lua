@@ -40,12 +40,14 @@ return require('packer').startup(function(use)
   }
 
   -- RUST
-  use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
+  use 'mfussenegger/nvim-dap'
+  use 'nvim-neotest/nvim-nio'
   use 'simrat39/rust-tools.nvim'
 
   --GIT 
   use 'tpope/vim-fugitive'
+  use 'lewis6991/gitsigns.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

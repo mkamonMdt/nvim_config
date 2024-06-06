@@ -40,6 +40,7 @@ return require('packer').startup(function(use)
   }
 
   -- RUST
+  use 'rust-lang/rust.vim'
   use 'rcarriga/nvim-dap-ui'
   use 'mfussenegger/nvim-dap'
   use 'nvim-neotest/nvim-nio'

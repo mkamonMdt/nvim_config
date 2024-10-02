@@ -19,7 +19,11 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use 'folke/tokyonight.nvim'
   use 'nvim-treesitter/nvim-treesitter'
-  use 'nvim-telescope/telescope.nvim'
+  use {'nvim-telescope/telescope.nvim',
+        requires = {
+            {'nvim-telescope/telescope-live-grep-args.nvim'},
+       },
+    }
   use 'christoomey/vim-tmux-navigator'
   use 'stevearc/oil.nvim'
   -- completion

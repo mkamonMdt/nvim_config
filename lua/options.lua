@@ -22,3 +22,5 @@ vim.cmd [[ set termguicolors ]]
 vim.wo.relativenumber = true
 vim.wo.number = true
 
+--Keymaps
+vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')

@@ -39,32 +39,32 @@ return {
 		    },
 		    extensions = {
 		      live_grep_args = {
-			auto_quoting = true, -- enable/disable auto-quoting
-			-- define mappings, e.g.
-			mappings = { -- extend mappings
-			    i = {
-			    ['<c-k>'] = lga_actions.quote_prompt(),
-			    ['<c-i>'] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-			    -- freeze the current list and start a fuzzy search in the frozen list
-			    ['<c-space>'] = lga_actions.to_fuzzy_refine,
-			    },
-			},
-			theme = {
-			    dropdown = {
-				layout_strategy = "vertical",
-				layout_config = {
-				    width = 0.9,
-				    height = 0.9,
-				    preview_cutoff = 40,
-				    prompt_position = "bottom",
-				    mirror = false,
-				},
-			    },
-			},
-			-- ... also accepts theme settings, for example:
-			-- theme = "dropdown", -- use dropdown theme
-			-- theme = { }, -- use own theme spec
-			}
+                auto_quoting = true, -- enable/disable auto-quoting
+                -- define mappings, e.g.
+                mappings = { -- extend mappings
+                    i = {
+                    ['<c-k>'] = lga_actions.quote_prompt(),
+                    ['<c-i>'] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                    -- freeze the current list and start a fuzzy search in the frozen list
+                    ['<c-space>'] = lga_actions.to_fuzzy_refine,
+                    },
+                },
+                theme = {
+                    dropdown = {
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        width = 0.9,
+                        height = 0.9,
+                        preview_cutoff = 40,
+                        prompt_position = "bottom",
+                        mirror = false,
+                    },
+                    },
+                },
+                -- ... also accepts theme settings, for example:
+                -- theme = "dropdown", -- use dropdown theme
+                -- theme = { }, -- use own theme spec
+                }
 		    }
 		})
 		require("telescope").load_extension("live_grep_args")
@@ -76,9 +76,11 @@ return {
 		--vim.keymap.set('n', '<Space>fg', builtin.live_grep, {})
 		vim.keymap.set('n', '<Space>gi', builtin.lsp_references, {})
 		vim.keymap.set('n', '<Space>fh', builtin.help_tags, {})
-		vim.keymap.set('n', "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+		vim.keymap.set('n', "<leader>fg", function()
+            require('telescope').extensions.live_grep_args.live_grep_args()
+        end, {})
 	end
   }
-}	
+}
 
 

@@ -10,6 +10,7 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
         local lga_actions = require("telescope-live-grep-args.actions")
+        local last_query = ""
 		require("telescope").setup({
 		    defaults = {
 			file_ignore_patterns = { "node%_modules/.*" },
@@ -43,8 +44,14 @@ return {
                 -- define mappings, e.g.
                 mappings = { -- extend mappings
                     i = {
-                    ['<c-k>'] = lga_actions.quote_prompt(),
-                    ['<c-i>'] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                    ['<C-k>'] = function(prompt_bufnr)
+                        last_query = require('telescope.actions.state').get_current_line(prompt_bufnr)
+                        require('telescope-live-grep-args.actions').quote_prompt()(prompt_bufnr)
+                    end,
+                    ['<C-i>'] = function(prompt_bufnr)
+                        last_query = require('telescope.actions.state').get_current_line(prompt_bufnr)
+                        require('telescope-live-grep-args.actions').quote_prompt({ postfix = " --iglob " })(prompt_bufnr)
+                    end,
                     -- freeze the current list and start a fuzzy search in the frozen list
                     ['<c-space>'] = lga_actions.to_fuzzy_refine,
                     },
@@ -61,9 +68,6 @@ return {
                     },
                     },
                 },
-                -- ... also accepts theme settings, for example:
-                -- theme = "dropdown", -- use dropdown theme
-                -- theme = { }, -- use own theme spec
                 }
 		    }
 		})
@@ -73,11 +77,11 @@ return {
 
 		vim.keymap.set('n', '<c-p>', builtin.find_files, {})
 		vim.keymap.set('n', '<Space><Space>', builtin.oldfiles, {})
-		--vim.keymap.set('n', '<Space>fg', builtin.live_grep, {})
 		vim.keymap.set('n', '<Space>gi', builtin.lsp_references, {})
 		vim.keymap.set('n', '<Space>fh', builtin.help_tags, {})
 		vim.keymap.set('n', "<leader>fg", function()
-            require('telescope').extensions.live_grep_args.live_grep_args()
+            require('telescope').extensions.live_grep_args.live_grep_args({
+                default_text = last_query})
         end, {})
 	end
   }

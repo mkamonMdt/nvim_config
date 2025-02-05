@@ -17,6 +17,7 @@ vim.opt.expandtab = true
 
 vim.cmd [[ set noswapfile ]]
 vim.cmd [[ set termguicolors ]]
+vim.opt.clipboard = "unnamedplus"
 
 --Line numbers
 vim.wo.relativenumber = true

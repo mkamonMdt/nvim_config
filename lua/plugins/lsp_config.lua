@@ -46,6 +46,14 @@ return {
     vim.keymap.set('n', '<C-o>', '<C-o>', {})  -- Go back to the previous location
     vim.keymap.set('n', '<C-i>', '<C-i>', {})  -- Go forward to the next location
 
+    -- action 
+    vim.keymap.set("n", "<Leader>a", function()
+        vim.lsp.buf.code_action({
+            border = "rounded", -- Optional: Rounded border for aesthetics
+            max_width = math.floor(vim.o.columns * 0.5), -- Half the width of the screen
+            max_height = math.floor(vim.o.lines * 0.3), -- 30% of the total screen height
+        })
+        end, { noremap = true, silent = true, desc = "LSP Code Action" })
     end,
   },
 }

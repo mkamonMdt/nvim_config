@@ -22,8 +22,26 @@ return {
           end,
         },
         window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          completion = cmp.config.window.bordered({
+            max_width = 40, -- Limit the completion menu width for vertical screens
+            side_padding = 1, -- Add padding to make it easier to read
+          }),
+          documentation = cmp.config.window.bordered({
+            max_height = 10, -- Limit documentation height for better usability
+            side_padding = 1, -- Padding for documentation readability
+          }),
+        },
+        formatting = {
+          format = function(entry, vim_item)
+            -- Customize the menu labels for each source
+            vim_item.menu = ({
+              nvim_lsp = "[LSP]",
+              luasnip = "[Snippet]",
+              buffer = "[Buffer]",
+              path = "[Path]",
+            })[entry.source.name]
+            return vim_item
+          end,
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),

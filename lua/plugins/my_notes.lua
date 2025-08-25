@@ -1,5 +1,6 @@
 local file_labels = {
   bindings = "/home/mk/.config/nvim/doc/key_bindings.md",
+  git = "/home/mk/.config/nvim/doc/git.md",
   -- Add more labels and paths as needed
 }
 

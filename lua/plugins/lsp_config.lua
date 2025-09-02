@@ -33,7 +33,6 @@ return {
         capabilities = capabilities
       })
 
-
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, {})  -- Alternative to 'gd'
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})

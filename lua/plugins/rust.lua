@@ -9,8 +9,10 @@ return {
         server = {
           settings = {
             ["rust-analyzer"] = {
-              checkOnSave = {
-                command = "clippy",
+              cmd = { "/home/mk/.local/share/nvim/mason/bin/rust-analyzer" },
+              checkOnSave = true,
+              check = {
+                command = "clippy", -- Use clippy for checks
               },
             },
           },

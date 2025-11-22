@@ -9,21 +9,17 @@ return {
 				sync_install = false,
 				auto_install = true,
 				highlight = {
-				enable = true,
+					enable = true,
 				},
 				indent = {
-				enable = true,
+					enable = true,
 				},
 				incremental_selection = { enable = true },
 				textobjects = { enable = true },
 				fold = {
-				enable = true,
-				}
+					enable = true,
+				},
 			})
-		end
-	}
+		end,
+	},
 }
-
---vim.o.foldmethod = 'expr'
---vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-
